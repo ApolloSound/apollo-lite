@@ -1,0 +1,7 @@
+<owl-carousel-o [options]="customOptions" class="owl-carousel owl-theme-adonis">
+    <ng-template carouselSlide *ngFor="let column of groupedTracks; let i = index">
+        <div class="item" *ngFor="let track of column">
+            <sf-track [track]="track"></sf-track>
+        </div>
+    </ng-template>
+</owl-carousel-o>
