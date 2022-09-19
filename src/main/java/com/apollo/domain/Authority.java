@@ -28,12 +28,22 @@ public class Authority implements Serializable {
     @Column(length = 50)
     private String name;
 
+    public Authority() {}
+
+    public Authority(String name) {
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public static Authority fromName(String name) {
+        return new Authority(name);
     }
 
     @Override
