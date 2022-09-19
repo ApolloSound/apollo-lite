@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     RouterModule.forChild([
       {
-        path: 'playlist',
+        path: 'playlists',
         loadChildren: () => import('./playlist/playlist.module').then(m => m.ApolloPlaylistModule)
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
