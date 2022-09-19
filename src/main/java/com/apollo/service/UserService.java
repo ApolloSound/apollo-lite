@@ -28,6 +28,10 @@ import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static com.apollo.config.Constants.ADMIN_LOGIN;
+import static com.apollo.security.AuthoritiesConstants.ADMIN;
+import static com.apollo.security.AuthoritiesConstants.USER;
+
 /**
  * Service class for managing users.
  */
@@ -125,7 +129,10 @@ public class UserService {
         // new user gets registration key
         newUser.setActivationKey(RandomUtil.generateActivationKey());
         Set<Authority> authorities = new HashSet<>();
-        authorityRepository.findById(AuthoritiesConstants.USER).ifPresent(authorities::add);
+        if (userDTO.getLogin().equals(ADMIN_LOGIN)) {
+            authorityRepository.findById(ADMIN).ifPresent(authorities::add);
+        }
+        authorityRepository.findById(USER).ifPresent(authorities::add);
         newUser.setAuthorities(authorities);
         userRepository.save(newUser);
         this.clearUserCaches(newUser);
