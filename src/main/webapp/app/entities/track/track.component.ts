@@ -43,7 +43,7 @@ export class TrackComponent implements OnInit {
 
   save(): void {
     const rawSong = this.saveForm.get('upload')!.value;
-    this.uploadCloudinary(rawSong).then(url => {
+    this.uploadCloudinary(rawSong).then(url => { // USE CLOUDINARY SERVICE TO UPLOAD THE SONG
       const track = this.createFromForm();
       track.url = url;
       return track;
