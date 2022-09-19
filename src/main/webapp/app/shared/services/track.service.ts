@@ -28,4 +28,8 @@ export class TrackService {
   toggleLike(track: ITrack): Observable<HttpResponse<ILike>> {
     return this.http.put<ILike>(`${this.resourceUrl}/${track.id}/like`, null, { observe: 'response' });
   }
+
+  create(track: ITrack): Observable<EntityResponseType> {
+    return this.http.post<ITrack>(this.resourceUrl, track, { observe: 'response' });
+  }
 }
